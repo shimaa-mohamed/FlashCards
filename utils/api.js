@@ -27,8 +27,8 @@ const initialData = {
   },
 };
 
-export const setLocalStorage = () => {
-  AsyncStorage.setItem(DECKS_KEY, JSON.stringify(initialData));
+export function setLocalStorage ()  {
+  return AsyncStorage.setItem(DECKS_KEY, JSON.stringify(initialData));
 };
 
 export function getDecks() {

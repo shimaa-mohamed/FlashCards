@@ -5,14 +5,9 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Button,
 } from "react-native";
-import DeckContent from "../components/DeckContent";
-
-class Home extends Component {
-  pressHandler = () => {
-    this.props.navigation.push("MyCard");
-  };
+import DeckContent from "./DeckContent";
+class DecksList extends Component {
 
   render() {
     const decks = [1, 2, 3, 4, 5, 6, 7];
@@ -20,9 +15,7 @@ class Home extends Component {
       <ScrollView style={styles.container}>
         {Object.values(decks).map((deck) => {
           return (
-            <View key={deck}>
-              <DeckContent deckKey={deck} press={this.pressHandler} />
-            </View>
+              <View key={deck}><DeckContent deckKey={deck}/></View>
           );
         })}
         <View style={{ marginBottom: 30 }} />
@@ -31,7 +24,7 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default DecksList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
