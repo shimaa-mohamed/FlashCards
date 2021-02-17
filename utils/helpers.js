@@ -1,5 +1,6 @@
 import { AsyncStorage } from "react-native";
-import { Notifications, Permissions } from "expo";
+import * as Notifications from "expo-notifications";
+import * as Permissions from "expo-permissions";
 
 export const DECKS_KEY = "Decks";
 const NOTIFICATIONS_KEY = "Notifications";
@@ -13,7 +14,7 @@ export function clearLocalNotification() {
 function createNotification() {
   return {
     title: "Quiz Reminder",
-    body: "Don't forget to take a quiz today ",
+    body: "Hello 🙋 Don't forget to take quiz today ",
     android: {
       sound: true,
       priority: "high",

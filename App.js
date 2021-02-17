@@ -6,10 +6,12 @@ import { createStore, applyMiddleware } from "redux";
 import reducer from "./reducers/index"
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import {setLocalNotification } from "./utils/helpers"
 const store = createStore(reducer, applyMiddleware(thunk));
 class App extends Component {
   componentDidMount() {
     setLocalStorage();
+    setLocalNotification();
   }
   render() {
     return (

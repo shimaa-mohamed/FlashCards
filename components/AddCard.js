@@ -20,6 +20,10 @@ class AddDeck extends Component {
       answer: this.state.answer,
     }
     const title=this.props.navigation.getParam("deckTitle");
+    if(this.state.question.length===0||this.state.answer.length===0){
+      alert("Please fill question and answer")
+      return;
+    }
     this.props
       .dispatch(handleAddNewCard(title,cardObj))
       .then(() => this.props.navigation.push("Tabs"));

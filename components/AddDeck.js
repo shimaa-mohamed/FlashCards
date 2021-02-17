@@ -15,6 +15,10 @@ class AddDeck extends Component {
     deckTitle: "",
   };
   handleAddDeck = () => {
+    if(this.state.deckTitle.length===0){
+      alert("Please fill Deck Title")
+      return;
+    }
     this.props
       .dispatch(handleAddNewDeck(this.state.deckTitle))
       .then(() => console.log("added"));

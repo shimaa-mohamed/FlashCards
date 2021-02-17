@@ -8,9 +8,10 @@ import {
   Button,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { clearLocalNotification, setLocalNotification} from '../utils/helpers'
 class Cards extends Component {
   static navigationOptions = ({ navigation }) => {
-    console.log(navigation.state.params.deckTitle);
+    // console.log(navigation.state.params.deckTitle);
     return {
         title: navigation.state.params.deckTitle
     }
@@ -24,11 +25,17 @@ class Cards extends Component {
 
   pressQuizHandler = (deckTitle,deckCard,numCards) => {
     // this.props.navigation.goBack();
-    this.props.navigation.push("Quiz",{
+    if(deckCard.questions.length!==0){
+      clearLocalNotification().then(setLocalNotification);
+      this.props.navigation.push("Quiz",{
       deckTitle,
       deckCard,
       numCards
-    });
+    });}
+    else{
+      alert("This Quiz is empty add cards to start quiz")
+    }
+    
   };
 
   render() {
@@ -41,6 +48,7 @@ class Cards extends Component {
       <ScrollView style={styles.container}>
         <View>
           <Text style={styles.title}>
+            📋 
             {this.props.navigation.getParam("deckTitle")}
           </Text>
           <Text style={styles.numCards}>{`${numCards} cards`}</Text>

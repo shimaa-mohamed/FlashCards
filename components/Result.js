@@ -9,10 +9,22 @@ import {
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 class Result extends Component {
+  handleRestartQuiz=()=>{
+    const press = this.props.navigation.getParam("press");
+    press();
+    this.props.navigation.goBack();
+  }
+  handleBacktoDeck=()=>{
+    const press = this.props.navigation.getParam("press");
+    press();
+    this.props.navigation.pop(2);
+  }
   render() {
     const numCards = this.props.navigation.getParam("numCards");
     const numCorrect = this.props.navigation.getParam("numCorrect");
+    
     const percentage = ((numCorrect / numCards) * 100).toFixed(1);
+    
     return (
       <ScrollView style={styles.container}>
         <View style={styles.icon}>
@@ -25,10 +37,10 @@ class Result extends Component {
           <Text
             style={styles.ResText}
           >{`Your Result In Percentage :${percentage} % `}</Text>
-          <TouchableOpacity style={styles.addCard}>
+          <TouchableOpacity style={styles.addCard} onPress={this.handleRestartQuiz}>
             <Text style={styles.textAddCard}>Restart Quiz </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.addCard}>
+          <TouchableOpacity style={styles.addCard} onPress={this.handleBacktoDeck}>
             <Text style={styles.textAddCard}>Back to Deck</Text>
           </TouchableOpacity>
         </View>

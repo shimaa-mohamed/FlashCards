@@ -16,12 +16,22 @@ class Quiz extends Component {
     incorrectAns: 0,
     stop: false,
   };
+  handleReset=()=>{
+    this.setState({
+      cardNum: 0,
+      ask: true,
+      correctAns: 0,
+      incorrectAns: 0,
+      stop: false,
+    });
+  }
   handleAnswers = (e) => {
     const numCards = this.props.navigation.getParam("numCards");
     const cardNum = this.state.cardNum;
     if (!(cardNum + 1 >= numCards)) {
-      this.setState({ cardNum: this.state.cardNum + 1 });
-      console.log("d5lt");
+      this.setState({ cardNum: this.state.cardNum + 1, ask: true });
+
+      // console.log("d5lt");
     }
 
     if (e === "corr") {
@@ -40,7 +50,12 @@ class Quiz extends Component {
       }
     }
     if (cardNum + 1 >= numCards) {
-      this.props.navigation.push("Result",{numCorrect:this.state.correctAns,numCards:numCards});
+     
+      this.props.navigation.push("Result", {
+        numCorrect: this.state.correctAns,
+        numCards: numCards,
+        press:this.handleReset,
+      });
     }
   };
   handleToggle = () => {
@@ -51,8 +66,8 @@ class Quiz extends Component {
     const deckCard = this.props.navigation.getParam("deckCard");
     const numCards = this.props.navigation.getParam("numCards");
     const { cardNum, ask } = this.state;
-    const toggleBut = ask ? "Question" : "Answer";
-    console.log(this.state);
+    const toggleBut = ask ? "Answer":"Question";
+    // console.log(this.state);
     let cardContent = ask
       ? deckCard["questions"][cardNum].question
       : deckCard["questions"][cardNum].answer;
