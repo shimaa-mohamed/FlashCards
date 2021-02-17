@@ -2,7 +2,7 @@ import {
   ADD_CARD_TO_DECK,
   RECIEVE_DECKS,
   ADD_NEW_DECK,
-} from "../actions/actionTypes";
+} from "../actions/index";
 
 export default function reducer(state = {}, action) {
   switch (action.type) {
@@ -10,7 +10,7 @@ export default function reducer(state = {}, action) {
       if (action.decks) {
         return {
           ...state,
-          ...JSON.parse(action.decks),
+          ...action.decks,
         };
       } else return {};
     case ADD_NEW_DECK:

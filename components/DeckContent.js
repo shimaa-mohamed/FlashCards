@@ -8,19 +8,18 @@ import {
 } from "react-native";
 
 class DeckContent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
+    const deck = this.props.deckCard;
+    const numCards = deck.questions.length;
+    const deckTitle = this.props.deckTitle;
     return (
-      <TouchableOpacity onPress={this.props.press}>
-        <View style={styles.container} key={this.props.deckKey}>
+      <TouchableOpacity onPress={()=>this.props.press(deckTitle,deck)}>
+        <View style={styles.container}>
           <View>
-            <Text style={styles.deckText}>quiz1</Text>
+            <Text style={styles.deckText}>{deckTitle}</Text>
           </View>
           <View>
-            <Text style={styles.cardText}>num of cards</Text>
+            <Text style={styles.cardText}>{`${numCards} Cards`}</Text>
           </View>
         </View>
       </TouchableOpacity>

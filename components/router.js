@@ -4,9 +4,14 @@ import Home from "./Home";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import React, { Component } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
-import MyCard from "./cards";
+import MyCard from "./Cards";
 import { StyleSheet, View, Text, Button } from "react-native";
-
+import { AntDesign } from '@expo/vector-icons';
+import DeckContents from "./DeckContent";
+import AddCard from "./AddCard";
+import AddDeck from "./AddDeck";
+import Quiz from "./Quiz";
+import Result from "./Result";
 const Tabs = createMaterialTopTabNavigator(
   {
     Home: {
@@ -14,19 +19,19 @@ const Tabs = createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarLabel: ({ tintColor }) => (
           <View style={styles.iconCOntainer}>
-            <Icon name="ios-home" color={tintColor} size={22} />
-            <Text style={{ color: tintColor }}>Home</Text>
+            <AntDesign name="book" color={tintColor} size={22} />
+            <Text style={{ color: tintColor }}>Decks</Text>
           </View>
         ),
       },
     },
-    MyCard: {
-      screen: MyCard,
+    AddDeck: {
+      screen: AddDeck,
       navigationOptions: {
         tabBarLabel: ({ tintColor }) => (
           <View style={styles.iconCOntainer}>
-            <Icon name="ios-person" color={tintColor} size={22} />
-            <Text style={{ color: tintColor }}>Profile</Text>
+            <AntDesign name="pluscircle" color={tintColor} size={22} />
+            <Text style={{ color: tintColor }}>Add Deck</Text>
           </View>
         ),
       },
@@ -40,7 +45,7 @@ const Tabs = createMaterialTopTabNavigator(
     tabBarOptions: {
       style: {
         height: 70,
-        backgroundColor: "#4C2B9C",
+        backgroundColor: "#032449",
         paddingBottom: 3,
         paddingTop: 3,
       },
@@ -53,14 +58,13 @@ const Tabs = createMaterialTopTabNavigator(
     },
   }
 );
-
 const screens = {
   Tabs: {
     screen: Tabs,
     navigationOptions: {
       title: "FlashCards",
       headerStyle: {
-        backgroundColor: "#360772",
+        backgroundColor: "#041B31",
       },
       headerTitleStyle: {
         color: "#F79200",
@@ -69,11 +73,22 @@ const screens = {
   },
   MyCard: {
     screen: MyCard,
+    
   },
+  AddCard:{
+    screen:AddCard,
+  },
+  Quiz:{
+    screen:Quiz,
+    
+  },
+  Result:{
+    screen:Result,
+    
+  },
+
 };
-
 const HomeStack = createStackNavigator(screens);
-
 export default createAppContainer(HomeStack);
 const styles = StyleSheet.create({
   iconCOntainer: {

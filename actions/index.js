@@ -9,20 +9,28 @@ export function receiveDecks(decks) {
     decks,
   };
 }
-export const handleReceiveDecks = () => (dispatch) =>
-  getDecks().then((allDesks) => {
-    dispatch(receiveDecks(allDesks));
-  });
+export function handleReceiveDecks() {
+  return (dispatch) => {
+    return getDecks().then((allDecks) => {
+      dispatch(receiveDecks(allDecks));
+    });
+  };
+}
+    
+
 export function addDeckTitle(title) {
   return {
     type: ADD_NEW_DECK,
     title,
   };
 }
-export const handleAddNewDeck = (title) => (dispatch) =>
-  saveDeckTitle(title).then(() => {
-    dispatch(addDeckTitle(title));
-  });
+export function handleAddNewDeck(title) {
+  return (dispatch) => {
+    return saveDeckTitle(title).then(() => {
+      dispatch(addDeckTitle(title));
+    });
+  };
+}
 export function addNewCard(title, card) {
   return {
     type: ADD_CARD_TO_DECK,

@@ -1,27 +1,43 @@
 import React, { Component } from "react";
-import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Button,
-} from "react-native";
+import {ScrollView,View,Text,StyleSheet,TouchableOpacity} from "react-native";
 import DeckContent from "../components/DeckContent";
+import { handleReceiveDecks } from "../actions/index";
+import { connect } from "react-redux";
 
 class Home extends Component {
-  pressHandler = () => {
-    this.props.navigation.push("MyCard");
+  componentDidMount() {
+    this.props.dispatch(handleReceiveDecks());
+  }
+  pressHandler = (deckTitle, deckCard) => {
+    this.props.navigation.push("MyCard", {
+      deckTitle: deckTitle,
+      deckCard: deckCard,
+      numCards: deckCard.questions.length,
+    });
   };
 
   render() {
-    const decks = [1, 2, 3, 4, 5, 6, 7];
+    const keys = Object.keys(this.props.decks);
+    const decksTitles = keys;
+    const decks = this.props.decks;
+
+    if (decksTitles.length === 0) {
+      return (
+        <View>
+          <Text> loading</Text>
+        </View>
+      );
+    }
     return (
       <ScrollView style={styles.container}>
-        {Object.values(decks).map((deck) => {
+        {decksTitles.map((deckTitle, i) => {
           return (
-            <View key={deck}>
-              <DeckContent deckKey={deck} press={this.pressHandler} />
+            <View key={i}>
+              <DeckContent
+                deckTitle={deckTitle}
+                deckCard={decks[deckTitle]}
+                press={this.pressHandler}
+              />
             </View>
           );
         })}
@@ -30,8 +46,12 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;
+function mapStateToProps(state) {
+  return {
+    decks: state,
+  };
+}
+export default connect(mapStateToProps)(Home);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
