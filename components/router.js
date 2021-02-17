@@ -4,7 +4,7 @@ import Home from "./Home";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import React, { Component } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
-import MyCard from "./Cards";
+import MyCard from "./cards";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import DeckContents from "./DeckContent";
