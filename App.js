@@ -3,14 +3,17 @@ import React, { Component } from "react";
 import Navigator from "./components/router";
 import { setLocalStorage } from "./utils/api";
 import { createStore, applyMiddleware } from "redux";
-import reducer from "./reducers/index"
+import { connect } from "react-redux";
+
+import reducer from "./reducers/index";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import {setLocalNotification } from "./utils/helpers"
+import { setLocalNotification } from "./utils/helpers";
 const store = createStore(reducer, applyMiddleware(thunk));
 class App extends Component {
   componentDidMount() {
     setLocalStorage();
+    this.props.dispatch(handleReceiveDecks());
     setLocalNotification();
   }
   render() {
@@ -25,7 +28,7 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
 const styles = StyleSheet.create({
   container: {
     flex: 1,

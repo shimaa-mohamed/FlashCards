@@ -26,7 +26,7 @@ class Cards extends Component {
   pressQuizHandler = (deckTitle,deckCard,numCards) => {
     // this.props.navigation.goBack();
     if(deckCard.questions.length!==0){
-      clearLocalNotification().then(setLocalNotification);
+      // clearLocalNotification().then(setLocalNotification);
       this.props.navigation.push("Quiz",{
       deckTitle,
       deckCard,

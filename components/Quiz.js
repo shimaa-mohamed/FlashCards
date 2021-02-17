@@ -8,6 +8,7 @@ import {
   Button,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { clearLocalNotification, setLocalNotification} from '../utils/helpers';
 class Quiz extends Component {
   state = {
     cardNum: 0,
@@ -50,7 +51,7 @@ class Quiz extends Component {
       }
     }
     if (cardNum + 1 >= numCards) {
-     
+      clearLocalNotification().then(setLocalNotification);
       this.props.navigation.push("Result", {
         numCorrect: this.state.correctAns,
         numCards: numCards,
