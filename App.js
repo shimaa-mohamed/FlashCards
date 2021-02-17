@@ -13,7 +13,7 @@ const store = createStore(reducer, applyMiddleware(thunk));
 class App extends Component {
   componentDidMount() {
     setLocalStorage();
-    this.props.dispatch(handleReceiveDecks());
+    // this.props.dispatch(handleReceiveDecks());
     setLocalNotification();
   }
   render() {
@@ -28,7 +28,7 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
