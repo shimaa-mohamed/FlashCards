@@ -41,10 +41,10 @@ class Quiz extends Component {
         this.setState({ stop: true });
       }
       if (!this.state.stop) {
-        console.log(this.state.correctAns);
+        // console.log(this.state.correctAns);
         this.setState({ correctAns: this.state.correctAns + 1 });
-        console.log("mofg2a");
-        console.log(this.state.correctAns);
+        // console.log("mofg2a");
+        // console.log(this.state.correctAns);
       }
     } else {
       if (this.state.incorrectAns + 1 > numCards) {
@@ -81,7 +81,7 @@ class Quiz extends Component {
       
     }
     const toggleBut = ask ? "Answer":"Question";
-    console.log(this.state);
+    // console.log(this.state);
     let cardContent = ask
       ? deckCard["questions"][cardNum].question
       : deckCard["questions"][cardNum].answer;
