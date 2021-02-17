@@ -1,4 +1,5 @@
-#flashcards App
+#Flashcards App
+
 This app allows users to build various flashcard categories (decks), add cards to those decks, then take quizzes on decks and shown Results.
 
 ##Getting Started
