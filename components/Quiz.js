@@ -24,6 +24,7 @@ class Quiz extends Component {
       correctAns: 0,
       incorrectAns: 0,
       stop: false,
+      done:false,
     });
   }
   handleAnswers = (e) => {
@@ -36,14 +37,17 @@ class Quiz extends Component {
     }
 
     if (e === "corr") {
-      if (this.state.correctAns + 1 > numCards - 1) {
+      if (this.state.correctAns + 1 > numCards) {
         this.setState({ stop: true });
       }
       if (!this.state.stop) {
+        console.log(this.state.correctAns);
         this.setState({ correctAns: this.state.correctAns + 1 });
+        console.log("mofg2a");
+        console.log(this.state.correctAns);
       }
     } else {
-      if (this.state.incorrectAns + 1 > numCards - 1) {
+      if (this.state.incorrectAns + 1 > numCards) {
         this.setState({ stop: true });
       }
       if (!this.state.stop) {
@@ -52,11 +56,12 @@ class Quiz extends Component {
     }
     if (cardNum + 1 >= numCards) {
       clearLocalNotification().then(setLocalNotification);
-      this.props.navigation.push("Result", {
-        numCorrect: this.state.correctAns,
-        numCards: numCards,
-        press:this.handleReset,
-      });
+      this.setState({done:true});
+      // this.props.navigation.push("Result", {
+      //   numCorrect: this.state.correctAns,
+      //   numCards: numCards,
+      //   press:this.handleReset,
+      // });
     }
   };
   handleToggle = () => {
@@ -66,9 +71,17 @@ class Quiz extends Component {
     const deckTitle = this.props.navigation.getParam("deckTitle");
     const deckCard = this.props.navigation.getParam("deckCard");
     const numCards = this.props.navigation.getParam("numCards");
-    const { cardNum, ask } = this.state;
+    const { cardNum, ask,done } = this.state;
+    if(done){
+        this.props.navigation.push("Result", {
+        numCorrect: this.state.correctAns,
+        numCards: numCards,
+        press:this.handleReset,
+      });
+      
+    }
     const toggleBut = ask ? "Answer":"Question";
-    // console.log(this.state);
+    console.log(this.state);
     let cardContent = ask
       ? deckCard["questions"][cardNum].question
       : deckCard["questions"][cardNum].answer;
