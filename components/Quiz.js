@@ -40,7 +40,7 @@ class Quiz extends Component {
       }
     }
     if (cardNum + 1 >= numCards) {
-      this.props.navigation.push("Result");
+      this.props.navigation.push("Result",{numCorrect:this.state.correctAns,numCards:numCards});
     }
   };
   handleToggle = () => {

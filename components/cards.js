@@ -51,7 +51,7 @@ class Cards extends Component {
           <TouchableOpacity style={styles.addCard} onPress={()=>this.pressQuizHandler(deckTitle,deckCard,numCards)}>
             <Text style={styles.textAddCard}>Start Quiz</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.delete}>
+          {/* <TouchableOpacity style={styles.delete}>
             <View style={styles.margin}>
               <AntDesign
                 name="delete"
@@ -61,7 +61,7 @@ class Cards extends Component {
               />
               <Text style={styles.deleteText}>Delete Deck</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
     );
