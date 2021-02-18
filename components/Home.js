@@ -24,7 +24,7 @@ class Home extends Component {
     if (decksTitles.length === 0) {
       return (
         <View>
-          <Text> loading</Text>
+          <Text style={styles.title}> Add some Decks </Text>
         </View>
       );
     }
