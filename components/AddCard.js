@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
+  ScrollView, StyleSheet, Text,
+
+
+
+  TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
 import { handleAddNewCard } from "../actions/index";

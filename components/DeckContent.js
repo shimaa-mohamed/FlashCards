@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
+  StyleSheet, Text,
+
+  TouchableOpacity, View
 } from "react-native";
 
 class DeckContent extends Component {

@@ -1,14 +1,12 @@
-import { View, StyleSheet, StatusBar } from "react-native";
 import React, { Component } from "react";
-import Navigator from "./components/router";
-import { setLocalStorage } from "./utils/api";
-import { createStore, applyMiddleware } from "redux";
-import { connect } from "react-redux";
-
-import reducer from "./reducers/index";
+import { StatusBar, StyleSheet, View } from "react-native";
 import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
+import Navigator from "./components/router";
+import reducer from "./reducers/index";
 import { setLocalNotification } from "./utils/helpers";
+
 const store = createStore(reducer, applyMiddleware(thunk));
 class App extends Component {
   componentDidMount() {

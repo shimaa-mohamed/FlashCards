@@ -1,13 +1,13 @@
+import { Entypo } from "@expo/vector-icons";
 import React, { Component } from "react";
 import {
   ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Button,
+
+
+  StyleSheet, Text,
+
+  TouchableOpacity, View
 } from "react-native";
-import { Entypo } from "@expo/vector-icons";
 class Result extends Component {
   handleRestartQuiz=()=>{
     const press = this.props.navigation.getParam("press");

@@ -1,15 +1,13 @@
-import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
-import Home from "./Home";
-import { createMaterialTopTabNavigator } from "react-navigation-tabs";
-import React, { Component } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
-import MyCard from "./cards";
-import { StyleSheet, View, Text, Button } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-import DeckContents from "./DeckContent";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import AddCard from "./AddCard";
 import AddDeck from "./AddDeck";
+import MyCard from "./cards";
+import Home from "./Home";
 import Quiz from "./Quiz";
 import Result from "./Result";
 const Tabs = createMaterialTopTabNavigator(

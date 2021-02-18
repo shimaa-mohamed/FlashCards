@@ -1,14 +1,11 @@
+import { AntDesign } from "@expo/vector-icons";
 import React, { Component } from "react";
 import {
-  ScrollView,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Button,
+  StyleSheet, Text,
+
+  TouchableOpacity, View
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { clearLocalNotification, setLocalNotification} from '../utils/helpers';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 class Quiz extends Component {
   state = {
     cardNum: 0,
