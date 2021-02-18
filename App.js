@@ -12,8 +12,6 @@ import { setLocalNotification } from "./utils/helpers";
 const store = createStore(reducer, applyMiddleware(thunk));
 class App extends Component {
   componentDidMount() {
-//     setLocalStorage();
-    // this.props.dispatch(handleReceiveDecks());
     setLocalNotification();
   }
   render() {
